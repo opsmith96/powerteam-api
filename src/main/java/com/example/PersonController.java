@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -32,11 +34,10 @@ public class PersonController {
     @Autowired
     public DataSource dataSource;
 
-    @RequestMapping(value="/persons",method = RequestMethod.POST)
+    @PostMapping("/persons")
     @ResponseBody
-    public String requestOTP( @RequestParam(value="person_id") String person_id , @RequestParam(value="first_name") String first_name) {
-        
-        return "created!" + person_id + first_name;
+    public Person updatePerson(@RequestBody Person input){
+        return input;
     }
 
 @GetMapping("/persons")
