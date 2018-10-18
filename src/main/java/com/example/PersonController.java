@@ -35,6 +35,7 @@ String persons(Map<Person, Object> model) {
     ResultSet rs = stmt.executeQuery("SELECT * FROM person");
     ArrayList<Person> output = new ArrayList<>();
     while (rs.next()) {
+        
       String person_id = rs.getString("person_id");
       String first_name = rs.getString("first_name");
       String last_name = rs.getString("last_name");
