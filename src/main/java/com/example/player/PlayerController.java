@@ -13,12 +13,12 @@ public class PlayerController {
 
     //Request: Create
     @RequestMapping(method = RequestMethod.POST, value = "/players")
-    public void createTopic(@RequestBody Player player){
+    public void createPlayer(@RequestBody Player player){
         playerService.addPlayer(player);
     }
 
     //Request: Read all
-    @RequestMapping("/topics")
+    @RequestMapping("/players")
     public List<Player> getAllPlayers(){
         return playerService.getAllPlayers();
     }
@@ -31,7 +31,7 @@ public class PlayerController {
 
     //Request: Update
     @RequestMapping(method = RequestMethod.PUT, value = "/players/{id}")
-    public void updateTopic(@RequestBody Player player, @PathVariable int id){
+    public void updatePlayer(@RequestBody Player player, @PathVariable int id){
         playerService.updatePlayer(player,id);
     }
 
