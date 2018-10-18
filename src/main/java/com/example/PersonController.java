@@ -63,7 +63,7 @@ public class PersonController {
   public String delete(@PathVariable("id") int person_id) {
     try (Connection connection = dataSource.getConnection()) {
 
-      String deleteSQL = "DELETE person WHERE person_id = ?";
+      String deleteSQL = "DELETE FROM person WHERE person_id = ?";
       PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
       preparedStatement.setInt(1, person_id);
       preparedStatement.executeUpdate();
