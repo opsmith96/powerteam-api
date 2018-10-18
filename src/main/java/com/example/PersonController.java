@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -38,8 +39,17 @@ public class PersonController {
     @ResponseBody
     public String updatePerson(@RequestBody Person input){
         try (Connection connection = dataSource.getConnection()) {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate("INSERT INTO person (person_id, first_name, last_name, date_of_birth, address_id) VALUES (input.getPersonID(), input.getPersonFirstName(), input.getPersonLastName(), input.getPersonDateOfBirth(), input.getPersonAdressId())");
+          String query = " insert into person (person_id, first_name, last_name, date_of_birth, address_id) values (?, ?, ?, ?, ?)";
+    
+          PreparedStatement preparedStmt = connection.prepareStatement(query);
+          preparedStmt.setString (1, input.getPersonID());
+          preparedStmt.setString (2, input.getPersonFirstName());
+          preparedStmt.setString (3, input.getPersonLastName());
+          preparedStmt.setString (4, input.getPersonDateOfBirth());
+          preparedStmt.setString (5, input.getPersonAdressId());
+    
+          preparedStmt.execute();
+
             return "Created!";
           } catch (Exception e) {
             return e.toString();
