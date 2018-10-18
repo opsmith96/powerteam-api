@@ -37,8 +37,13 @@ public class PersonController {
     @PostMapping("/persons")
     @ResponseBody
     public String updatePerson(@RequestBody Person input){
-        String hi = input.rPerson();
-        return hi;
+        try (Connection connection = dataSource.getConnection()) {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("INSERT INTO person (person_id, first_name, last_name, date_of_birth, address_id) VALUES (input.getPersonID(), input.getPersonFirstName(), input.getPersonLastName(), input.getPersonDateOfBirth(), input.getPersonAdressId()");
+            return "Created!";
+          } catch (Exception e) {
+            return "error";
+          }
     }
 
 @GetMapping("/persons")
