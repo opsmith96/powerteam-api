@@ -1,4 +1,4 @@
-package src.main.java.com.example;
+package com.example;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -94,7 +94,7 @@ public class Main {
 		String prettyJson = prettyGson.toJson(output);
 		
       model.put("records", output);
-      return output.toString();
+      return prettyJson;
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
