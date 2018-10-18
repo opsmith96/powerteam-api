@@ -60,13 +60,10 @@ public class Main {
     }
   }
 
-  @RequestMapping("/persons")
+  @GetMapping("/persons")
   @ResponseBody
   String persons(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-      stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       ResultSet rs = stmt.executeQuery("SELECT * FROM person");
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
@@ -81,8 +78,6 @@ public class Main {
         output.add(last_name);
         output.add(date_of_birth);
         output.add(address_id);
-
-
     }
 
       model.put("records", output);
