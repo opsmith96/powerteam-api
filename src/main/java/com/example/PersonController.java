@@ -2,8 +2,13 @@ package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Connection;
@@ -27,6 +32,13 @@ public class PersonController {
     @Autowired
     public DataSource dataSource;
 
+    @RequestMapping(value="/persons",method = RequestMethod.POST)
+    @ResponseBody
+    public String requestOTP( @RequestParam(value="person_id") String person_id , @RequestParam(value="first_name") String first_name) {
+        
+        return "created!" + person_id + first_name;
+    }
+
 @GetMapping("/persons")
 @ResponseBody
 String persons(Map<Person, Object> model) {
@@ -35,7 +47,7 @@ String persons(Map<Person, Object> model) {
     ResultSet rs = stmt.executeQuery("SELECT * FROM person");
     ArrayList<Person> output = new ArrayList<>();
     while (rs.next()) {
-        
+
       String person_id = rs.getString("person_id");
       String first_name = rs.getString("first_name");
       String last_name = rs.getString("last_name");
@@ -55,3 +67,4 @@ String persons(Map<Person, Object> model) {
   }
 }
 }
+
