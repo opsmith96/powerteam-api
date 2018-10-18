@@ -66,7 +66,8 @@ public class PersonController {
       String query = "delete from person where person_id = ?";
       PreparedStatement preparedStmt = connection.prepareStatement(query);
         preparedStmt.setInt(1, person_id);
-        preparedStmt.execute();
+        preparedStmt.executeUpdate();
+
 
 
     return"Deleted!"; 
