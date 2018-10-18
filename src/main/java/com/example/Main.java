@@ -86,10 +86,6 @@ public class Main {
         output.add("address_id: " +address_id);
     }
 
-    GsonBuilder gsonBuilder = new GsonBuilder();
-		Gson gson = gsonBuilder.create();
-    String JSONObject = gson.toJson(output);
-    		
 		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 		String prettyJson = prettyGson.toJson(output);
 		
