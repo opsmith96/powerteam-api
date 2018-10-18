@@ -40,14 +40,13 @@ public class PersonController {
     @ResponseBody
     public String updatePerson(@RequestBody Person input){
         try (Connection connection = dataSource.getConnection()) {
-          String query = " insert into person (person_id, first_name, last_name, date_of_birth, address_id) values (?, ?, ?, ?, ?)";
+          String query = " insert into person (first_name, last_name, date_of_birth, address_id) values (?, ?, ?, ?)";
     
           PreparedStatement preparedStmt = connection.prepareStatement(query);
-          preparedStmt.setInt    (1, input.getPersonID());
-          preparedStmt.setString (2, input.getPersonFirstName());
-          preparedStmt.setString (3, input.getPersonLastName());
-          preparedStmt.setDate (4, input.getPersonDateOfBirth());
-          preparedStmt.setInt (5, input.getPersonAdressId());
+          preparedStmt.setString (1, input.getPersonFirstName());
+          preparedStmt.setString (2, input.getPersonLastName());
+          preparedStmt.setDate (3, input.getPersonDateOfBirth());
+          preparedStmt.setInt (4, input.getPersonAdressId());
     
           preparedStmt.execute();
 
