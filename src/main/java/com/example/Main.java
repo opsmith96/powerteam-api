@@ -88,7 +88,8 @@ public class Main {
 
     GsonBuilder gsonBuilder = new GsonBuilder();
 		Gson gson = gsonBuilder.create();
-		String JSONObject = gson.toJson(output);		
+    String JSONObject = gson.toJson(output);
+    		
 		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 		String prettyJson = prettyGson.toJson(output);
 		
