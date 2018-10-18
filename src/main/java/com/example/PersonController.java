@@ -42,7 +42,7 @@ public class PersonController {
           String query = " insert into person (person_id, first_name, last_name, date_of_birth, address_id) values (?, ?, ?, ?, ?)";
     
           PreparedStatement preparedStmt = connection.prepareStatement(query);
-          preparedStmt.setString (1, input.getPersonID());
+          preparedStmt.setInt    (1, input.getPersonID());
           preparedStmt.setString (2, input.getPersonFirstName());
           preparedStmt.setString (3, input.getPersonLastName());
           preparedStmt.setString (4, input.getPersonDateOfBirth());
@@ -65,7 +65,7 @@ String persons(Map<Person, Object> model) {
     ArrayList<Person> output = new ArrayList<>();
     while (rs.next()) {
 
-      String person_id = rs.getString("person_id");
+      int person_id = rs.getInt("person_id");
       String first_name = rs.getString("first_name");
       String last_name = rs.getString("last_name");
       String date_of_birth = rs.getString("date_of_birth");
