@@ -39,7 +39,7 @@ public class PersonController {
     public String updatePerson(@RequestBody Person input){
         try (Connection connection = dataSource.getConnection()) {
             Statement stmt = connection.createStatement();
-            stmt.executeUpdate("INSERT INTO person (person_id, first_name, last_name, date_of_birth, address_id) VALUES (input.getPersonID(), input.getPersonFirstName(), input.getPersonLastName(), input.getPersonDateOfBirth(), input.getPersonAdressId()");
+            stmt.executeUpdate("INSERT INTO person (person_id, first_name, last_name, date_of_birth, address_id) VALUES (input.getPersonID(), input.getPersonFirstName(), input.getPersonLastName(), input.getPersonDateOfBirth(), input.getPersonAdressId())");
             return "Created!";
           } catch (Exception e) {
             return e.toString();
