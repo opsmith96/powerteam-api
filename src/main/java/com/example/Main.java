@@ -15,24 +15,30 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+
 @SpringBootApplication
+@EnableJpaRepositories({"com.example"})
 public class Main {
 
-  @Value("${spring.datasource.url}")
-  public String dbUrl;
+  //@Value("${spring.datasource.url}")
+  //public String dbUrl;
 
-  @Autowired
-  public DataSource dataSource;
+  //@Autowired
+  //public DataSource dataSource;
 
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
   }
 
+
+
+  /*
   @RequestMapping("/")
   String index() {
     return "index";
@@ -70,4 +76,5 @@ public class Main {
       return new HikariDataSource(config);
     }
   }
+  */
 }
