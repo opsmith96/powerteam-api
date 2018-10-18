@@ -76,11 +76,11 @@ public class Main {
         String date_of_birth = rs.getString("date_of_birth");
         String address_id = rs.getString("address_id");
 
-        output.add(person_id);
-        output.add(first_name);
-        output.add(last_name);
-        output.add(date_of_birth);
-        output.add(address_id);
+        output.add("person_id: " +person_id);
+        output.add("first_name: " +first_name);
+        output.add("last_name: " +last_name);
+        output.add("date_of_birth: " +date_of_birth);
+        output.add("address_id: " +address_id);
     }
 
       model.put("records", output);
