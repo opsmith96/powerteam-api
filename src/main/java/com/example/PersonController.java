@@ -1,4 +1,4 @@
-package com.example.person;
+package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
