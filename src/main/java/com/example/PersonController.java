@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -45,8 +46,8 @@ public class PersonController {
           preparedStmt.setInt    (1, input.getPersonID());
           preparedStmt.setString (2, input.getPersonFirstName());
           preparedStmt.setString (3, input.getPersonLastName());
-          preparedStmt.setString (4, input.getPersonDateOfBirth());
-          preparedStmt.setString (5, input.getPersonAdressId());
+          preparedStmt.setDate (4, input.getPersonDateOfBirth());
+          preparedStmt.setInt (5, input.getPersonAdressId());
     
           preparedStmt.execute();
 
@@ -68,8 +69,8 @@ String persons(Map<Person, Object> model) {
       int person_id = rs.getInt("person_id");
       String first_name = rs.getString("first_name");
       String last_name = rs.getString("last_name");
-      String date_of_birth = rs.getString("date_of_birth");
-      String address_id = rs.getString("address_id");
+      Date date_of_birth = rs.getDate("date_of_birth");
+      int address_id = rs.getInt("address_id");
 
       output.add(new Person(person_id, first_name, last_name, date_of_birth, address_id));
 
