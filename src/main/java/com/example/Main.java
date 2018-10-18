@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 
 @Controller
 @SpringBootApplication
@@ -83,6 +86,12 @@ public class Main {
         output.add("address_id: " +address_id);
     }
 
+    GsonBuilder gsonBuilder = new GsonBuilder();
+		Gson gson = gsonBuilder.create();
+		String JSONObject = gson.toJson(output);		
+		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+		String prettyJson = prettyGson.toJson(output);
+		
       model.put("records", output);
       return output.toString();
     } catch (Exception e) {
