@@ -39,21 +39,26 @@ public class PersonController {
     @PostMapping("/persons")
     @ResponseBody
     public String updatePerson(@RequestBody Person input){
+      boolean auto_increment = true;
+      int i = 0;
+      while(auto_increment){
         try (Connection connection = dataSource.getConnection()) {
-          String query = " insert into person (first_name, last_name, date_of_birth, address_id) values (?, ?, ?, ?)";
+          String query = " insert into person (person_id, first_name, last_name, date_of_birth, address_id) values (?, ?, ?, ?, ?)";
     
           PreparedStatement preparedStmt = connection.prepareStatement(query);
-          preparedStmt.setString (1, input.getPersonFirstName());
-          preparedStmt.setString (2, input.getPersonLastName());
-          preparedStmt.setDate (3, input.getPersonDateOfBirth());
-          preparedStmt.setInt (4, input.getPersonAdressId());
+          preparedStmt.setInt    (1, i);
+          preparedStmt.setString (2, input.getPersonFirstName());
+          preparedStmt.setString (3, input.getPersonLastName());
+          preparedStmt.setDate (4, input.getPersonDateOfBirth());
+          preparedStmt.setInt (5, input.getPersonAdressId());
     
           preparedStmt.execute();
-
-            return "Created!";
+          auto_increment = false;
           } catch (Exception e) {
-            return e.toString();
+            i++;
           }
+        }
+        return "Created!";
     }
 
 @GetMapping("/persons")
