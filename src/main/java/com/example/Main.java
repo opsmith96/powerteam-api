@@ -67,11 +67,11 @@ public class Main {
 
   @GetMapping("/persons")
   @ResponseBody
-  String persons(Map<String, Object> model) {
+  String persons(Map<person, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       ResultSet rs = stmt.executeQuery("SELECT * FROM person");
-      ArrayList<String> output = new ArrayList<String>();
+      ArrayList<person> output = new ArrayList<>();
       while (rs.next()) {
         String person_id = rs.getString("person_id");
         String first_name = rs.getString("first_name");
@@ -79,23 +79,15 @@ public class Main {
         String date_of_birth = rs.getString("date_of_birth");
         String address_id = rs.getString("address_id");
 
-        output.add({);
-        output.add("person_id: " +person_id);
-        output.add("first_name: " +first_name);
-        output.add("last_name: " +last_name);
-        output.add("date_of_birth: " +date_of_birth);
-        output.add("address_id: " +address_id);
-        output.add(});
+		output.add(new person(person_id, first_name, last_name, date_of_birth, address_id));
 
     }
 
 		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 		String prettyJson = prettyGson.toJson(output);
 		
-      model.put("records", output);
       return prettyJson;
     } catch (Exception e) {
-      model.put("message", e.getMessage());
       return "error";
     }
   }
