@@ -60,9 +60,10 @@ public class PersonController {
   @DeleteMapping("/persons/{id}")
   public String deleteStudent(@PathVariable int id) {
     try (Connection connection = dataSource.getConnection()) {
+      int deleteID = id;
       String query = "delete from person where person_id = ?";
       PreparedStatement preparedStmt = connection.prepareStatement(query);
-        preparedStmt.setInt(1, id);
+        preparedStmt.setInt(1, deleteID);
         preparedStmt.execute();
 
 
