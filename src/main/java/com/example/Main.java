@@ -66,6 +66,7 @@ public class Main {
   @ResponseBody
   String persons(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
+      Statement stmt = connection.createStatement();
       ResultSet rs = stmt.executeQuery("SELECT * FROM person");
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
