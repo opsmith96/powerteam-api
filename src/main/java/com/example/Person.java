@@ -14,4 +14,9 @@ String address_id;
        this.date_of_birth= date_of_birth;
        this.address_id = address_id;
     }
+    public String rPerson(){
+
+        return person_id +" "+ first_name + last_name + date_of_birth + address_id;
+
+    }
 }

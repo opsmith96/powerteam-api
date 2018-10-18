@@ -36,8 +36,9 @@ public class PersonController {
 
     @PostMapping("/persons")
     @ResponseBody
-    public Person updatePerson(@RequestBody Person input){
-        return input;
+    public String updatePerson(@RequestBody Person input){
+        String hi = input.rPerson();
+        return hi;
     }
 
 @GetMapping("/persons")
