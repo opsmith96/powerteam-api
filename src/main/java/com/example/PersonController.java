@@ -20,6 +20,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -58,17 +59,16 @@ public class PersonController {
   }
 
   @DeleteMapping("/students/{id}")
-  public String deleteStudent(@PathVariable int id) {
+  public int deleteStudent(@PathVariable int id) {
     try (Connection connection = dataSource.getConnection()) {
       String query = "delete from person where person_id = ?)";
       PreparedStatement preparedStmt = connection.prepareStatement(query);
+
         preparedStmt.setInt(1, id);
         preparedStmt.execute();
-
-
-    return"Deleted!"; 
+    return id; 
     } catch (Exception e) {
-      return e.toString();
+      return id;
     }
   
   }
