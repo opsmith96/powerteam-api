@@ -18,21 +18,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 
 @Controller
 @SpringBootApplication
 public class Main {
 
   @Value("${spring.datasource.url}")
-  private String dbUrl;
+  public String dbUrl;
 
   @Autowired
-  private DataSource dataSource;
+  public DataSource dataSource;
 
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
@@ -65,32 +60,6 @@ public class Main {
     }
   }
 
-  @GetMapping("/persons")
-  @ResponseBody
-  String persons(Map<person, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT * FROM person");
-      ArrayList<person> output = new ArrayList<>();
-      while (rs.next()) {
-        String person_id = rs.getString("person_id");
-        String first_name = rs.getString("first_name");
-        String last_name = rs.getString("last_name");
-        String date_of_birth = rs.getString("date_of_birth");
-        String address_id = rs.getString("address_id");
-
-		output.add(new person(person_id, first_name, last_name, date_of_birth, address_id));
-
-    }
-
-		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-		String prettyJson = prettyGson.toJson(output);
-		
-      return prettyJson;
-    } catch (Exception e) {
-      return "error";
-    }
-  }
   @Bean
   public DataSource dataSource() throws SQLException {
     if (dbUrl == null || dbUrl.isEmpty()) {
