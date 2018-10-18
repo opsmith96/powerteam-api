@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Connection;
@@ -57,13 +59,13 @@ public class PersonController {
     return "Created!";
   }
 
-  @DeleteMapping("/persons/{id}")
-  public String deleteStudent(@PathVariable int id) {
+  @DeleteMapping("persons/{id}")
+  public String delete(@PathVariable("id") int person_id) {
     try (Connection connection = dataSource.getConnection()) {
-      int deleteID = id;
+
       String query = "delete from person where person_id = ?";
       PreparedStatement preparedStmt = connection.prepareStatement(query);
-        preparedStmt.setInt(1, deleteID);
+        preparedStmt.setInt(1, person_id);
         preparedStmt.execute();
 
 
