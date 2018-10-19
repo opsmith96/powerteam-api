@@ -31,7 +31,7 @@ public class Main {
   @RequestMapping("/")
   @ResponseBody
   String index() {
-    return "Hi this is an API";
+    return "Hi this is an API, GET /persons or persons/{person_id}     post to /persons creates a person     delete to /persons/{person_id} ";
   }
 
   @Bean
