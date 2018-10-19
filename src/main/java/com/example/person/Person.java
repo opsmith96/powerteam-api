@@ -1,4 +1,4 @@
-package com.example;
+package com.example.person;
 
 import java.sql.Date;
 
