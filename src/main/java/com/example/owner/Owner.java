@@ -13,7 +13,7 @@ public class Owner {
         return person_id;
     }
 
-    public int getContactID() {
+    public int getOwnerID() {
         return owner_id;
     }
 }
