@@ -76,7 +76,6 @@ public class PersonController {
   @ResponseBody
   String getPerson(@PathVariable("id") int id){
     try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
       String query = "SELECT * FROM person WHERE person_id = ?";
       PreparedStatement preparedStatement = connection.prepareStatement(query);
       preparedStatement.setInt(1, id);
