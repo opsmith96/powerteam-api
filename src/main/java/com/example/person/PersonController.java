@@ -79,7 +79,7 @@ public class PersonController {
       String query = "SELECT * FROM person WHERE person_id = ?";
       PreparedStatement preparedStatement = connection.prepareStatement(query);
       preparedStatement.setInt(1, id);
-      ResultSet rs = preparedStatement.executeQuery(query );
+      ResultSet rs = preparedStatement.executeQuery();
       ArrayList<Person> output = new ArrayList<>();
 
       int person_id = rs.getInt("person_id");
