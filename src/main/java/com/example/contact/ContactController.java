@@ -1,4 +1,4 @@
-package com.example.person;
+package com.example.contact;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +24,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @Controller
-public class PersonController {
+public class ContactController {
 
   @Value("${spring.datasource.url}")
   public String dbUrl;
@@ -33,51 +33,9 @@ public class PersonController {
   public DataSource dataSource;
 
   @CrossOrigin(origins = "*")
-  @PostMapping("/persons")
+  @GetMapping("/contacts/{id}")
   @ResponseBody
-  public String createPerson(@RequestBody Person input) {
-    boolean auto_increment = true;
-    int i = 0;
-    while (auto_increment) {
-      try (Connection connection = dataSource.getConnection()) {
-        String query = " insert into person (person_id, first_name, last_name, date_of_birth, address_id) values (?, ?, ?, ?, ?)";
-
-        PreparedStatement preparedStmt = connection.prepareStatement(query);
-        preparedStmt.setInt(1, i);
-        preparedStmt.setString(2, input.getPersonFirstName());
-        preparedStmt.setString(3, input.getPersonLastName());
-        preparedStmt.setDate(4, input.getPersonDateOfBirth());
-        preparedStmt.setInt(5, input.getPersonAdressId());
-
-        preparedStmt.execute();
-        auto_increment = false;
-      } catch (Exception e) {
-        i++;
-      }
-    }
-    return "Created!";
-  }
-
-  @CrossOrigin(origins = "*")
-  @DeleteMapping("persons/{id}")
-  public String deletePerson(@PathVariable("id") int person_id) {
-    try (Connection connection = dataSource.getConnection()) {
-
-      String deleteSQL = "UPDATE person SET first_name = 'Undefined', last_name  = 'Undefined', date_of_birth = TO_DATE('00/00/000', 'DD/MM/YYYY') WHERE person_id = ? ";
-      PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
-      preparedStatement.setInt(1, person_id);
-      preparedStatement.executeUpdate();
-
-      return "Deleted!";
-    } catch (Exception e) {
-      return e.toString();
-    }
-  }
-
-  @CrossOrigin(origins = "*")
-  @GetMapping("/persons/{id}")
-  @ResponseBody
-  String getPerson(@PathVariable("id") int id) {
+  String getContact(@PathVariable("id") int id) {
     try (Connection connection = dataSource.getConnection()) {
       String query = "SELECT * FROM person WHERE person_id = ?";
       PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -106,23 +64,21 @@ public class PersonController {
   }
 
   @CrossOrigin(origins = "*")
-  @GetMapping("/persons")
+  @GetMapping("/contacts")
   @ResponseBody
-  String getPersons() {
+  String getContacts() {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      String query = "SELECT * FROM person";
+      String query = "SELECT * FROM contact";
       ResultSet rs = stmt.executeQuery(query);
-      ArrayList<Person> output = new ArrayList<>();
+      ArrayList<Contact> output = new ArrayList<>();
       while (rs.next()) {
-
         int person_id = rs.getInt("person_id");
-        String first_name = rs.getString("first_name");
-        String last_name = rs.getString("last_name");
-        Date date_of_birth = rs.getDate("date_of_birth");
-        int address_id = rs.getInt("address_id");
+        String contact_type = rs.getString("contact_type");
+        String contact_detail = rs.getString("contact_detail");
+  
 
-        output.add(new Person(person_id, first_name, last_name, date_of_birth, address_id));
+        output.add(new Contact(person_id, contact_type, contact_detail));
 
       }
 
