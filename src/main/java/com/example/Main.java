@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @SpringBootApplication
@@ -28,8 +29,9 @@ public class Main {
   }
 
   @RequestMapping("/")
+  @ResponseBody
   String index() {
-    return "index";
+    return "Hi this is an API";
   }
 
   @Bean
