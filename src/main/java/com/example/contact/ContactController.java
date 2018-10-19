@@ -37,19 +37,19 @@ public class ContactController {
   @ResponseBody
   String getContact(@PathVariable("id") int id) {
     try (Connection connection = dataSource.getConnection()) {
-      String query = "SELECT * FROM contact WHERE contact_id = ?";
+      String query = "SELECT * FROM contact WHERE person_id = ?";
       PreparedStatement preparedStatement = connection.prepareStatement(query);
       preparedStatement.setInt(1, id);
       ResultSet rs = preparedStatement.executeQuery();
       ArrayList<Contact> output = new ArrayList<>();
       while (rs.next()) {
 
-        int contact_id = rs.getInt("contact_id");
+        int person_id = rs.getInt("person_id");
         String contact_type = rs.getString("contact_type");
         String contact_detail = rs.getString("contact_detail");
 
 
-        output.add(new Contact(contact_id, contact_type, contact_detail));
+        output.add(new Contact(person_id, contact_type, contact_detail));
 
       }
 
