@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -49,7 +48,7 @@ public class ContactController {
         preparedStmt.setString(4, input.getContactDetail());
 
         preparedStmt.execute();
-´      } catch (Exception e) {
+      } catch (Exception e) {
         return e.toString();
       }
     
