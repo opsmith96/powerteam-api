@@ -16,7 +16,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -71,12 +70,11 @@ public class PersonController {
     } catch (Exception e) {
       return e.toString();
     }
-  
   }
-
+  
   @GetMapping("/persons")
   @ResponseBody
-  String persons(Map<Person, Object> model) {
+  String getPersons(){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       ResultSet rs = stmt.executeQuery("SELECT * FROM person");
