@@ -37,6 +37,9 @@ public class ContactController {
   @PostMapping("/contacts")
   @ResponseBody
   public String createContact(@RequestBody Contact input) {
+    boolean auto_increment = true;
+    int i = 0;
+    while (auto_increment) {
       try (Connection connection = dataSource.getConnection()) {
         String query = " insert into contact (contact_id, person_id, contact_type, contact_detail) values (?, ?, ?, ?)";
 
@@ -48,13 +51,13 @@ public class ContactController {
         preparedStmt.setString(4, input.getContactDetail());
 
         preparedStmt.execute();
-      } catch (Exception e) {
-        return e.toString();
-      }
-    
-    return "Created!";
+        auto_increment = false;
+    } catch (Exception e) {
+      i++;
+    }
   }
-
+  return "Created!";
+}
 
   @CrossOrigin(origins = "*")
   @DeleteMapping("contacts/{id}")
