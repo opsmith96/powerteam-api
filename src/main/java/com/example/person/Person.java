@@ -20,15 +20,19 @@ public class Person {
     public int getPersonID() {
         return person_id;
     }
+
     public String getPersonFirstName() {
         return first_name;
     }
+
     public String getPersonLastName() {
         return last_name;
     }
+
     public Date getPersonDateOfBirth() {
         return date_of_birth;
     }
+
     public int getPersonAdressId() {
         return address_id;
     }

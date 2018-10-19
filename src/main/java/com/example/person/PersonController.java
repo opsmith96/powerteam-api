@@ -33,7 +33,7 @@ public class PersonController {
 
   @PostMapping("/persons")
   @ResponseBody
-  public String updatePerson(@RequestBody Person input) {
+  public String createPerson(@RequestBody Person input) {
     boolean auto_increment = true;
     int i = 0;
     while (auto_increment) {
@@ -57,7 +57,7 @@ public class PersonController {
   }
 
   @DeleteMapping("persons/{id}")
-  public String delete(@PathVariable("id") int person_id) {
+  public String deletePerson(@PathVariable("id") int person_id) {
     try (Connection connection = dataSource.getConnection()) {
 
       String deleteSQL = "UPDATE person SET first_name = 'Undefined', last_name  = 'Undefined', date_of_birth = TO_DATE('00/00/000', 'DD/MM/YYYY') WHERE person_id = ? ";
@@ -65,8 +65,7 @@ public class PersonController {
       preparedStatement.setInt(1, person_id);
       preparedStatement.executeUpdate();
 
-
-    return"Deleted!"; 
+      return "Deleted!";
     } catch (Exception e) {
       return e.toString();
     }
@@ -74,7 +73,7 @@ public class PersonController {
 
   @GetMapping("/persons/{id}")
   @ResponseBody
-  String getPerson(@PathVariable("id") int id){
+  String getPerson(@PathVariable("id") int id) {
     try (Connection connection = dataSource.getConnection()) {
       String query = "SELECT * FROM person WHERE person_id = ?";
       PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -101,10 +100,10 @@ public class PersonController {
       return e.toString();
     }
   }
-  
+
   @GetMapping("/persons")
   @ResponseBody
-  String getPersons(){
+  String getPersons() {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       String query = "SELECT * FROM person";
