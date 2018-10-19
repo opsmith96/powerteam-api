@@ -39,12 +39,14 @@ public class ContactController {
   @ResponseBody
   public String createContact(@RequestBody Contact input) {
       try (Connection connection = dataSource.getConnection()) {
-        String query = " insert into contact (person_id, contact_type, contact_detail) values (?, ?, ?)";
+        String query = " insert into contact (contact_id, person_id, contact_type, contact_detail) values (?, ?, ?, ?)";
 
         PreparedStatement preparedStmt = connection.prepareStatement(query);
-        preparedStmt.setInt(1, input.getPersonID());
-        preparedStmt.setString(2, input.getContactType());
-        preparedStmt.setString(3, input.getContactDetail());
+        preparedStmt.setInt(1, input.getContactID());
+
+        preparedStmt.setInt(2, input.getPersonID());
+        preparedStmt.setString(3, input.getContactType());
+        preparedStmt.setString(4, input.getContactDetail());
 
         preparedStmt.execute();
 ´      } catch (Exception e) {
@@ -57,12 +59,12 @@ public class ContactController {
 
   @CrossOrigin(origins = "*")
   @DeleteMapping("contacts/{id}")
-  public String deleteContacts(@PathVariable("id") int person_id) {
+  public String deleteContacts(@PathVariable("id") int contact_id) {
     try (Connection connection = dataSource.getConnection()) {
 
-      String deleteSQL = "UPDATE contact SET contact_type = 'Undefined', contact_detail = 'Undefined' WHERE person_id = ? ";
+      String deleteSQL = "UPDATE contact SET contact_type = 'Undefined', contact_detail = 'Undefined' WHERE contact_id = ? ";
       PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
-      preparedStatement.setInt(1, person_id);
+      preparedStatement.setInt(1, contact_id);
       preparedStatement.executeUpdate();
 
       return "Deleted!";
@@ -76,7 +78,7 @@ public class ContactController {
   @ResponseBody
   String getContact(@PathVariable("id") int id) {
     try (Connection connection = dataSource.getConnection()) {
-      String query = "SELECT * FROM contact WHERE person_id = ?";
+      String query = "SELECT * FROM contact WHERE contact_id = ?";
       PreparedStatement preparedStatement = connection.prepareStatement(query);
       preparedStatement.setInt(1, id);
       ResultSet rs = preparedStatement.executeQuery();
@@ -84,11 +86,12 @@ public class ContactController {
       while (rs.next()) {
 
         int person_id = rs.getInt("person_id");
+        int contact_id = rs.getInt("contact_id");
         String contact_type = rs.getString("contact_type");
         String contact_detail = rs.getString("contact_detail");
 
 
-        output.add(new Contact(person_id, contact_type, contact_detail));
+        output.add(new Contact(person_id, contact_id, contact_type, contact_detail));
 
       }
 
@@ -111,12 +114,13 @@ public class ContactController {
       ResultSet rs = stmt.executeQuery(query);
       ArrayList<Contact> output = new ArrayList<>();
       while (rs.next()) {
+        int contact_id = rs.getInt("contact_id");
+
         int person_id = rs.getInt("person_id");
         String contact_type = rs.getString("contact_type");
         String contact_detail = rs.getString("contact_detail");
   
-
-        output.add(new Contact(person_id, contact_type, contact_detail));
+        output.add(new Contact(contact_id, person_id, contact_type, contact_detail));
 
       }
 
