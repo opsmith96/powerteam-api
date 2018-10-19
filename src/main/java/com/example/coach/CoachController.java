@@ -53,7 +53,7 @@ public class CoachController {
   return "Created!";
 }
   @CrossOrigin(origins = "*")
-  @GetMapping("/Coaches/{id}")
+  @GetMapping("/coaches/{id}")
   @ResponseBody
   String getCoach(@PathVariable("id") int id) {
     try (Connection connection = dataSource.getConnection()) {
@@ -81,7 +81,7 @@ public class CoachController {
   }
 
   @CrossOrigin(origins = "*")
-  @GetMapping("/Coaches")
+  @GetMapping("/coaches")
   @ResponseBody
   String getCoaches() {
     try (Connection connection = dataSource.getConnection()) {
