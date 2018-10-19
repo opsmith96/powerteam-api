@@ -81,14 +81,17 @@ public class PersonController {
       preparedStatement.setInt(1, id);
       ResultSet rs = preparedStatement.executeQuery();
       ArrayList<Person> output = new ArrayList<>();
+      while (rs.next()) {
 
-      int person_id = rs.getInt("person_id");
-      String first_name = rs.getString("first_name");
-      String last_name = rs.getString("last_name");
-      Date date_of_birth = rs.getDate("date_of_birth");
-      int address_id = rs.getInt("address_id");
+        int person_id = rs.getInt("person_id");
+        String first_name = rs.getString("first_name");
+        String last_name = rs.getString("last_name");
+        Date date_of_birth = rs.getDate("date_of_birth");
+        int address_id = rs.getInt("address_id");
 
-      output.add(new Person(person_id, first_name, last_name, date_of_birth, address_id));
+        output.add(new Person(person_id, first_name, last_name, date_of_birth, address_id));
+
+      }
 
       Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
       String prettyJson = prettyGson.toJson(output);
