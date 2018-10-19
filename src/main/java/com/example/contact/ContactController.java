@@ -38,23 +38,19 @@ public class ContactController {
   @PostMapping("/contacts")
   @ResponseBody
   public String createContact(@RequestBody Contact input) {
-    boolean auto_increment = true;
-    int i = 0;
-    while (auto_increment) {
       try (Connection connection = dataSource.getConnection()) {
         String query = " insert into contact (person_id, contact_type, contact_detail) values (?, ?, ?)";
 
         PreparedStatement preparedStmt = connection.prepareStatement(query);
-        preparedStmt.setInt(1, i);
+        preparedStmt.setInt(1, input.getPersonID());
         preparedStmt.setString(2, input.getContactType());
         preparedStmt.setString(3, input.getContactDetail());
 
         preparedStmt.execute();
-        auto_increment = false;
-      } catch (Exception e) {
-        i++;
+´      } catch (Exception e) {
+        return e.toString();
       }
-    }
+    
     return "Created!";
   }
 
