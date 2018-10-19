@@ -77,7 +77,8 @@ public class PersonController {
   String getPersons(){
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT * FROM person");
+      String query = "SELECT * FROM person";
+      ResultSet rs = stmt.executeQuery(query);
       ArrayList<Person> output = new ArrayList<>();
       while (rs.next()) {
 
