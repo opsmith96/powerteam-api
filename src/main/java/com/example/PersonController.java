@@ -61,18 +61,14 @@ public class PersonController {
   public String delete(@PathVariable("id") int person_id) {
     try (Connection connection = dataSource.getConnection()) {
 
-<<<<<<< HEAD
       String deleteSQL = "UPDATE person SET first_name = ?, last_name  = ?, date_of_birth = ? WHERE person_id = ? ";
-=======
-      String deleteSQL = "DELETE FROM person WHERE person_id = ?";
->>>>>>> parent of b2ccef5... m
       PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
       preparedStatement.setString (1, "Undefined");
       preparedStatement.setString (2, "Undefined");
       preparedStatement.setDate (3, java.sql.Date.valueOf("0000-00-00"));
       preparedStatement.setInt(4, person_id);
 
-      preparedStatement.executeUpdate();
+      preparedStatement.execute();
 
 
     return"Deleted!"; 
