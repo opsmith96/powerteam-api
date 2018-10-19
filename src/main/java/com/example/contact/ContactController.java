@@ -92,7 +92,7 @@ public class ContactController {
         String contact_detail = rs.getString("contact_detail");
 
 
-        output.add(new Contact(person_id, contact_id, contact_type, contact_detail));
+        output.add(new Contact(contact_id, person_id, contact_type, contact_detail));
 
       }
 
