@@ -80,8 +80,7 @@ public class PersonController {
       String query = "SELECT * FROM person WHERE person_id = ?";
       PreparedStatement preparedStatement = connection.prepareStatement(query);
       preparedStatement.setInt(1, id);
-      preparedStatement.executeUpdate();
-      ResultSet rs = stmt.executeQuery(query);
+      ResultSet rs = preparedStatement.executeQuery(query );
       ArrayList<Person> output = new ArrayList<>();
       while (rs.next()) {
 
