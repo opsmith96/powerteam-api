@@ -32,6 +32,23 @@ public class ContactController {
   @Autowired
   public DataSource dataSource;
 
+
+  @CrossOrigin(origins = "*")
+  @DeleteMapping("contacts/{id}")
+  public String deleteContacts(@PathVariable("id") int person_id) {
+    try (Connection connection = dataSource.getConnection()) {
+
+      String deleteSQL = "UPDATE contact SET contact_type = 'Undefined', contact_detail = 'Undefined' WHERE person_id = ? ";
+      PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
+      preparedStatement.setInt(1, person_id);
+      preparedStatement.executeUpdate();
+
+      return "Deleted!";
+    } catch (Exception e) {
+      return e.toString();
+    }
+  }
+
   @CrossOrigin(origins = "*")
   @GetMapping("/contacts/{id}")
   @ResponseBody
