@@ -44,8 +44,7 @@ public class ContactController {
         String query = " insert into contact (contact_id, person_id, contact_type, contact_detail) values (?, ?, ?, ?)";
 
         PreparedStatement preparedStmt = connection.prepareStatement(query);
-        preparedStmt.setInt(1, input.getContactID());
-
+        preparedStmt.setInt(1, i);
         preparedStmt.setInt(2, input.getPersonID());
         preparedStmt.setString(3, input.getContactType());
         preparedStmt.setString(4, input.getContactDetail());
