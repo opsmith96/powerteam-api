@@ -1,0 +1,408 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>API DOCUMENTATION</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1>HI API!</h1>
+    <br>
+    <h3>SEARCH</h3>
+    <p><a href="/search_teams/Noroff">/search_teams/Noroff</a> returns all teams with name that contains Noroff</p>
+    <p><a href="/search_persons/Ole">/search_persons/Ole</a> returns all persons with first or lastname containing ole</p>
+    <p><a href="/search_locations/Stadium">/search_locations/Stadium</a> returns all locations with name that contains
+        Stadium</p>
+
+
+    <h3>GET</h3>
+    <p>Methods for READ opperations</p>
+    <p><a href="/players">/players</a> returns all players</p>
+    <p><a href="/players/3">/players/3</a> returns player with ID 3</p>
+    <p><a href="/players_filtered/active">/players_filtered/active</a> returns all active players</p>
+    <p><a href="/players_filtered/inactive">/players_filtered/active</a> returns all inactive players</p>
+    <br>
+    <p><a href="/associations">/associations</a> returns all associations</p>
+    <p><a href="/associations/3">/associations/3</a> returns association with ID 3</p>
+    <p><a href="/associations_filtered/active">/associations_filtered/active</a> returns all active associations</p>
+    <p><a href="/associations_filtered/inactive">/associations_filtered/inactive</a> returns all inactive associations</p>
+    <br>
+    <p><a href="/coaches">/coaches</a> returns all coaches</p>
+    <p><a href="/coaches/3">/coaches/3</a> returns coach with ID 3</p>
+    <p><a href="/coaches_filtered/active">/coaches_filtered/active</a> returns all active coaches</p>
+    <p><a href="/coaches_filtered/inactive">/coaches_filtered/active</a> returns all inactive coaches</p>
+    <br>
+    <p><a href="/owners">/owners</a> returns all owners</p>
+    <p><a href="/owners/3">/owners/3</a> returns owner with ID 3</p>
+    <p><a href="/owners_filtered/active">/owners_filtered/active</a> returns all active owners</p>
+    <p><a href="/owners_filtered/inactive">/owners_filtered/active</a> returns all inactive owners</p>
+    <br>
+    <p><a href="/persons">/persons</a> returns all persons</p>
+    <p><a href="/persons/3">/persons/3</a> returns person with ID 3</p>
+    <p><a href="/persons_filtered/active">/persons_filtered/active</a> returns all active persons</p>
+    <p><a href="/persons_filtered/inactive">/persons_filtered/active</a> returns all inactive persons</p>
+    <br>
+    <p><a href="/contacts">/contacts</a> returns all contacts</p>
+    <p><a href="/contacts/3">/contacts/3</a> returns contact with ID 3</p>
+    <p><a href="/contacts_filtered/active">/contacts_filtered/active</a> returns all active contacts</p>
+    <p><a href="/contacts_filtered/inactive">/contacts_filtered/active</a> returns all inactive contacts</p>
+    <br>
+    <p><a href="/match_positions">/match_positions</a> returns all match positions</p>
+    <p><a href="/match_positions/3">/match_positions/3</a> returns match_position with ID 3</p>
+    <p><a href="/match_positions_filtered/active">/match_positions_filtered/active</a> returns all active match
+        positions</p>
+    <p><a href="/match_positions_filtered/inactive">/match_positions_filtered/active</a> returns all inactive match
+        positions</p>
+    <br>
+    <p><a href="/results">/results</a> returns all results</p>
+    <p><a href="/results/3">/results/3</a> returns result with ID 3</p>
+    <p><a href="/results_filtered/active">/results_filtered/active</a> returns all active results</p>
+    <p><a href="/results_filtered/inactive">/results_filtered/active</a> returns all inactive results</p>
+    <br>
+    <p><a href="/teams">/teams</a> returns all teams</p>
+    <p><a href="/teams/3">/teams/3</a> returns team with ID 3</p>
+    <p><a href="/teams_filtered/active">/teams_filtered/active</a> returns all active teams</p>
+    <p><a href="/teams_filtered/inactive">/teams_filtered/active</a> returns all inactive teams</p>
+    <br>
+    <p><a href="/addresses">/addresses</a> returns all addresses</p>
+    <p><a href="/addresses/3">/addresses/3</a> returns address with ID 3</p>
+    <p><a href="/addresses_filtered/active">/addresses_filtered/active</a> returns all active addresses</p>
+    <p><a href="/addresses_filtered/inactive">/addresses_filtered/active</a> returns all inactive addresses</p>
+    <br>
+    <p><a href="/seasons">/seasons</a> returns all seasons</p>
+    <p><a href="/seasons/3">/seasons/3</a> returns season with ID 3</p>
+    <p><a href="/seasons_filtered/active">/seasons_filtered/active</a> returns all active seasons</p>
+    <p><a href="/seasons_filtered/inactive">/seasons_filtered/active</a> returns all inactive seasons</p>
+    <br>
+    <p><a href="/locations">/locations</a> returns all locations</p>
+    <p><a href="/locations/3">/locations/3</a> returns location with ID 3</p>
+    <p><a href="/locations_filtered/active">/locations_filtered/active</a> returns all active locations</p>
+    <p><a href="/locations_filtered/inactive">/locations_filtered/active</a> returns all inactive locations</p>
+    <br>
+    <p><a href="/goal_types">/goal_types</a> returns all goal types</p>
+    <p><a href="/goal_types/3">/goal_types/3</a> returns goal_type with ID 3</p>
+    <p><a href="/goal_types_filtered/active">/goal_types_filtered/active</a> returns all active goal types</p>
+    <p><a href="/goal_types_filtered/inactive">/goal_types_filtered/active</a> returns all inactive goal types</p>
+    <br>
+    <p><a href="/match_goals">/match_goals</a> returns all match goals</p>
+    <p><a href="/match_goals/3">/match_goals/3</a> returns match_goal with ID 3</p>
+    <p><a href="/match_goals_filtered/active">/match_goals_filtered/active</a> returns all active match goals</p>
+    <p><a href="/match_goals_filtered/inactive">/match_goals_filtered/active</a> returns all inactive match goals</p>
+    <br>
+    <p><a href="/matches">/matches</a> returns all matches</p>
+    <p><a href="/matches/3">/matches/3</a> returns match with ID 3</p>
+    <p><a href="/matches_filtered/active">/matches_filtered/active</a> returns all active matches</p>
+    <p><a href="/matches_filtered/inactive">/matches_filtered/active</a> returns all inactive matches</p>
+    <br>
+    <h3>POST</h3>
+    <p>Methods for CREATE opperations</p>
+    <p>All POST requeste are expected as JSON</p>
+    <br>
+    <p><a href="/players">/players</a> Create player with these parameters:
+        {<br>
+        "person_id": int,
+        "team_id": int,
+        "normal_position": String,
+        "number": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/associations">/associations</a> Create associations with these parameters:
+        {<br>
+        "name": String,
+        "description": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/coaches">/coaches</a> Create coaches with these parameters:
+        {<br>
+        "person_id": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/owners">/owners</a> Create owners with these parameters:
+        {<br>
+        "person_id": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/persons">/persons</a> Create persons with these parameters:
+        {<br>
+        "address_id": int,
+        "first_name": String,
+        "last_name": String,
+        "date_of_birth": Date,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/contacts">/contacts</a> Create contacts with these parameters:
+        {<br>
+        "person_id": int,
+        "contact_type": String,
+        "contact_detail": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/match_positions">/match_positions</a> Create match positions with these parameters:
+        {<br>
+        "player_id": int,
+        "match_id": int,
+        "position": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/results">/results</a> Create results with these parameters:
+        {<br>
+        "match_id": int,
+        "team_id": int,
+        "result": String,
+        "score": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/teams">/teams</a> Create teams with these parameters:
+        {<br>
+        "association_id": int,
+        "coach_id": int,
+        "location_id": int,
+        "name": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/addresses">/addresses</a> Create addresses with these parameters:
+        {<br>
+        "address_line_1": String,
+        "address_line_2": String(can be null),
+        "address_line_3": String(can be null),
+        "postal_code": String,
+        "city": String,
+        "country": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/seasons">/seasons</a> Create seasons with these parameters:
+        {<br>
+        "start_date": date,
+        "end_date": date,
+        "name": String,
+        "description": String,
+        "activity": true/flalse
+        <br>}
+    </p>
+    <p><a href="/locations">/locations</a> Create locations with these parameters:
+        {<br>
+        "address_id": int,
+        "name": String,
+        "description": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/goal_types">/goal_types</a> Create goal types with these parameters:
+        {<br>
+        "type": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/match_goals">/match_goals</a> Create match goals with these parameters:
+        {<br>
+        "player_id": int,
+        "goal_type_id": int,
+        "description": String,
+        "activity": true/false,
+        "match_Id": int
+        <br>}
+    </p>
+    <p><a href="/matches">/matches</a> Create matches with these parameters:
+        {<br>
+        "match_date": date,
+        "home_team_id": int,
+        "away_team_id": int,
+        "season_id": int,
+        "location_id": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <br>
+    <h3>PUT</h3>
+    <p>Methods for UPDATE opperations</p>
+    <p>All PUT requeste are expected as JSON</p>
+    <p>Only the values you send will be updated</p>
+    <br>
+    <p><a href="/players">/players</a> to update a player send one or multiple of the following parameters:
+        {<br>
+        "person_id": int,
+        "team_id": int,
+        "normal_position": String,
+        "number": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/associations">/associations</a> to update an associations send one or multiple of the following
+        parameters:
+        {<br>
+        "name": String,
+        "description": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/coaches">/coaches</a> to update a coach send one or multiple of the following
+        parameters:
+        {<br>
+        "person_id": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/owners">/owners</a> to update a owner send one or multiple of the following
+        parameters:
+        {<br>
+        "person_id": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/persons">/persons</a> to update a person send one or multiple of the following
+        parameters:
+        {<br>
+        "address_id": int,
+        "first_name": String,
+        "last_name": String,
+        "date_of_birth": Date,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/contacts">/contacts</a> to update a contact send one or multiple of the following
+        parameters:
+        {<br>
+        "person_id": int,
+        "contact_type": String,
+        "contact_detail": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/match_positions">/match_positions</a> to update a match position send one or multiple of the following
+        parameters:
+        {<br>
+        "player_id": int,
+        "match_id": int,
+        "position": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/results">/results</a> to update a result send one or multiple of the following
+        parameters:
+        {<br>
+        "match_id": int,
+        "team_id": int,
+        "result": String,
+        "score": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/teams">/teams</a> to update a team send one or multiple of the following
+        parameters:
+        {<br>
+        "association_id": int,
+        "coach_id": int,
+        "location_id": int,
+        "name": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/addresses">/addresses</a> to update an address send one or multiple of the following
+        parameters:
+        {<br>
+        "address_line_1": String,
+        "address_line_2": String(can be null),
+        "address_line_3": String(can be null),
+        "postal_code": String,
+        "city": String,
+        "country": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/seasons">/seasons</a> to update a season send one or multiple of the following
+        parameters:
+        {<br>
+        "start_date": date,
+        "end_date": date,
+        "name": String,
+        "description": String,
+        "activity": true/flalse
+        <br>}
+    </p>
+    <p><a href="/locations">/locations</a> to update a location send one or multiple of the following
+        parameters:
+        {<br>
+        "address_id": int,
+        "name": String,
+        "description": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/goal_types">/goal_types</a> to update a goal type send one or multiple of the following
+        parameters:
+        {<br>
+        "type": String,
+        "activity": true/false
+        <br>}
+    </p>
+    <p><a href="/match_goals">/match_goals</a> to update a match goal send one or multiple of the following
+        parameters:
+        {<br>
+        "player_id": int,
+        "goal_type_id": int,
+        "description": String,
+        "activity": true/false,
+        "match_Id": int
+        <br>}
+    </p>
+    <p><a href="/matches">/matches</a> to update a match send one or multiple of the following
+        parameters:
+        {<br>
+        "match_date": date,
+        "home_team_id": int,
+        "away_team_id": int,
+        "season_id": int,
+        "location_id": int,
+        "activity": true/false
+        <br>}
+    </p>
+    <br>
+    <h3>DELETE</h3>
+    <p>Methods for DELETE opperations</p>
+    <p>Entries does not actually get deleted just put to inactive</p>
+    <br>
+    <p><a href="/players/id">/players/id</a>Deletes a player with the provided ID</p>
+    <br>
+    <p><a href="/associations/id">/associations/id</a>Deletes a association with the provided ID</p>
+    <br>
+    <p><a href="/coaches/id">/coaches/id</a>Deletes a coach with the provided ID</p>
+    <br>
+    <p><a href="/owners/id">/owners/id</a>Deletes a owner with the provided ID</p>
+    <br>
+    <p><a href="/persons/id">/persons/id</a>Deletes a person with the provided ID</p>
+    <br>
+    <p><a href="/contacts/id">/contacts/id</a>Deletes a contact with the provided ID</p>
+    <br>
+    <p><a href="/match_positions/id">/match_positions/id</a>Deletes a match position with the provided ID</p>
+    <br>
+    <p><a href="/results/id">/results/id</a>Deletes a result with the provided ID</p>
+    <br>
+    <p><a href="/teams/id">/teams/id</a>Deletes a team with the provided ID</p>
+    <br>
+    <p><a href="/addresses/id">/addresses/id</a>Deletes an address with the provided ID</p>
+    <br>
+    <p><a href="/seasons/id">/seasons/id</a>Deletes a season with the provided ID</p>
+    <br>
+    <p><a href="/locations/id">/locations/id</a>Deletes a location with the provided ID</p>
+    <br>
+    <p><a href="/goal_types/id">/goal_types/id</a>Deletes a goal type with the provided ID</p>
+    <br>
+    <p><a href="/match_goals/id">/match_goals/id</a>Deletes a match goal with the provided ID</p>
+    <br>
+    <p><a href="/matches/id">/matches/id</a>Deletes a matches with the provided ID</p>
+</body>
+
+</html>
