@@ -58,7 +58,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
       ); }
 
 
-    /*@Override
+    @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().and().exceptionHandling()
                 .authenticationEntryPoint(restAuthenticationEntryPoint).and().authorizeRequests().antMatchers("/")
@@ -66,15 +66,15 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").hasRole("ADMIN").and().formLogin().successHandler(mySuccessHandler)
                 .failureHandler(myFailureHandler).and().httpBasic().and().logout();
         http.cors();
-    }*/
+    }
 
-
+/*
       @Override protected void configure(HttpSecurity http) throws Exception {
       http.authorizeRequests().antMatchers("/").access("").anyRequest().permitAll
       ().and().formLogin().loginPage("/")
       .usernameParameter("user_name").passwordParameter("password").and().logout()
       .logoutSuccessUrl("/login?logout").and().exceptionHandling().accessDeniedPage
-      ("/403").and().csrf(); }
+      ("/403").and().csrf(); }*/
 
 
     @Bean
