@@ -43,22 +43,22 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
         SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
     }
 
-    @Override
+    /*@Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("admin").password(encoder().encode("adminPass")).roles("ADMIN").and()
                 .withUser("user").password(encoder().encode("userPass")).roles("USER");
-    }
+    }*/
 
-    /*
-     * @Autowired public void configure(AuthenticationManagerBuilder auth) throws
-     * Exception { auth.jdbcAuthentication().dataSource(dataSource)
-     * .usersByUsernameQuery("select user_name,password from users where username=?"
-     * )
-     * .authoritiesByUsernameQuery("select username, admin_flag from users where username=?"
-     * ); }
-     */
 
-    @Override
+      @Autowired public void configure(AuthenticationManagerBuilder auth) throws
+      Exception { auth.jdbcAuthentication().dataSource(dataSource)
+      .usersByUsernameQuery("select user_name,password from users where username=?"
+      )
+      .authoritiesByUsernameQuery("select username, admin_flag from users where username=?"
+      ); }
+
+
+    /*@Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().and().exceptionHandling()
                 .authenticationEntryPoint(restAuthenticationEntryPoint).and().authorizeRequests().antMatchers("/")
@@ -66,16 +66,16 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").hasRole("ADMIN").and().formLogin().successHandler(mySuccessHandler)
                 .failureHandler(myFailureHandler).and().httpBasic().and().logout();
         http.cors();
-    }
+    }*/
 
-    /*
-     * @Override protected void configure(HttpSecurity http) throws Exception {
-     * http.authorizeRequests().antMatchers("/").access("')").anyRequest().permitAll
-     * ().and().formLogin().loginPage("/")
-     * .usernameParameter("user_name").passwordParameter("password").and().logout()
-     * .logoutSuccessUrl("/login?logout").and().exceptionHandling().accessDeniedPage
-     * ("/403").and().csrf(); }
-     */
+
+      @Override protected void configure(HttpSecurity http) throws Exception {
+      http.authorizeRequests().antMatchers("/").access("')").anyRequest().permitAll
+      ().and().formLogin().loginPage("/")
+      .usernameParameter("user_name").passwordParameter("password").and().logout()
+      .logoutSuccessUrl("/login?logout").and().exceptionHandling().accessDeniedPage
+      ("/403").and().csrf(); }
+
 
     @Bean
     public PasswordEncoder encoder() {
