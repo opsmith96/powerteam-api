@@ -63,7 +63,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests().and().exceptionHandling()
                 .authenticationEntryPoint(restAuthenticationEntryPoint).and().authorizeRequests().antMatchers("/")
                 .permitAll().antMatchers("/").permitAll().antMatchers("/").authenticated().antMatchers("/").permitAll()
-                .antMatchers("/**").hasRole("TRUE").and().formLogin().successHandler(mySuccessHandler)
+                .antMatchers("/**").hasRole("true").and().formLogin().successHandler(mySuccessHandler)
                 .failureHandler(myFailureHandler).and().httpBasic().and().logout();
         http.cors();
     }
