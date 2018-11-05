@@ -70,7 +70,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
 
       @Override protected void configure(HttpSecurity http) throws Exception {
-      http.authorizeRequests().antMatchers("/").access("')").anyRequest().permitAll
+      http.authorizeRequests().antMatchers("/").access("").anyRequest().permitAll
       ().and().formLogin().loginPage("/")
       .usernameParameter("user_name").passwordParameter("password").and().logout()
       .logoutSuccessUrl("/login?logout").and().exceptionHandling().accessDeniedPage
